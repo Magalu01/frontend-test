@@ -5,7 +5,7 @@ Desenvolver uma aplicação de listagem e detalhe de personagens de quadrinhos.
 
 #### Requisitos
 - Deve ser uma SPA “single page application” (dar preferencia ao React);
-- Não utilizar bibliotecas de UI como: bootstrap, semantic-ui, antdesign;
+- Não utilizar bibliotecas de UI como: bootstrap, semantic-ui, antdesign e etc;
 - Utilizar API da Marvel (https://developer.marvel.com/docs);
 - Disponibilizar em uma URL pública do projeto rodando para avaliação;
 - Disponibilizar código em repositório Git de sua preferência, commitando cada fase do seu processo de desenvolvimento;
