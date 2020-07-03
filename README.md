@@ -39,7 +39,7 @@ Desenvolver uma aplicação de listagem e detalhe de personagens de quadrinhos.
 <br/>
 <br/>
 
-<p align="center"><img src="./doc/luizalabs.jpeg" width="80" height="80"/></p>
+<p align="center"><img src="luizalabs.jpeg" width="80" height="80"/></p>
 <p align="center">
 <sub>Gente. Inovação e Código. <a href="https://luizalabs.com">Luizalabs</a></sub>
 </p>
