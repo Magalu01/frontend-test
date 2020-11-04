@@ -1,3 +1,17 @@
-import styled from 'styled-components';
+import React from 'react';
+import { Container, Header, Content } from './styles';
 
-export const Container = styled.div``;
+import FilterHeroesDetails from '../../components/FilterHeroesDetails';
+
+const Details = () => {
+  return (
+    <Container>
+      <Header>
+        <FilterHeroesDetails />
+      </Header>
+      <Content />
+    </Container>
+  );
+};
+
+export default Details;
