@@ -1,6 +1,8 @@
 import React from 'react';
 import iconHeart from '../../assets/icones/heart/Path.png';
+import iconNoBoardHeart from '../../assets/icones/heart/Path Copy 2.png';
 import iconHero from '../../assets/icones/heroi/noun_Superhero_2227044.png';
+import teste from '../../assets/star-lord.jpeg';
 
 import {
   List,
@@ -11,6 +13,9 @@ import {
   SwitchButton,
   Favorites,
   BodyList,
+  HeroItem,
+  ImgHero,
+  InfosHero,
 } from './styles';
 
 const ListOfHeroes = () => {
@@ -32,17 +37,51 @@ const ListOfHeroes = () => {
           </Favorites>
         </RightTitle>
       </TitleList>
-      <br />
       <BodyList>
-        <div>
-          <div>
-            <img src="" alt="" />
-          </div>
-          <div>
+        <HeroItem>
+          <ImgHero>
+            <img src={teste} alt="star-lord" />
+          </ImgHero>
+          <InfosHero>
             <h4>Star- Lord</h4>
-            <button>Like</button>
-          </div>
-        </div>
+            <button>
+              <img src={iconNoBoardHeart} alt="" />
+            </button>
+          </InfosHero>
+        </HeroItem>
+        <HeroItem>
+          <ImgHero>
+            <img src={teste} alt="star-lord" />
+          </ImgHero>
+          <InfosHero>
+            <h4>Star- Lord</h4>
+            <button>
+              <img src={iconNoBoardHeart} alt="" />
+            </button>
+          </InfosHero>
+        </HeroItem>
+        <HeroItem>
+          <ImgHero>
+            <img src={teste} alt="star-lord" />
+          </ImgHero>
+          <InfosHero>
+            <h4>Star- Lord</h4>
+            <button>
+              <img src={iconNoBoardHeart} alt="" />
+            </button>
+          </InfosHero>
+        </HeroItem>
+        <HeroItem>
+          <ImgHero>
+            <img src={teste} alt="star-lord" />
+          </ImgHero>
+          <InfosHero>
+            <h4>Star- Lord</h4>
+            <button>
+              <img src={iconNoBoardHeart} alt="" />
+            </button>
+          </InfosHero>
+        </HeroItem>
       </BodyList>
     </List>
   );
