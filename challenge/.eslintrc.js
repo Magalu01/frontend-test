@@ -3,8 +3,12 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: ['airbnb-base', 'prettier'],
-  plugins: ['prettier'],
+  extends: [
+    'airbnb-base',
+    'prettier',
+    'plugin:react/recommended'
+  ],
+  plugins: ['prettier','react'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -14,6 +18,8 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars':'error',
     'prettier/prettier': [
       'error',
       {
