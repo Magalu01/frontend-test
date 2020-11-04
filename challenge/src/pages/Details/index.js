@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Header, Content } from './styles';
 
 import FilterHeroesDetails from '../../components/FilterHeroesDetails';
+import HeroeSelected from '../../components/HeroeSelected';
 
 const Details = () => {
   return (
@@ -9,7 +10,9 @@ const Details = () => {
       <Header>
         <FilterHeroesDetails />
       </Header>
-      <Content />
+      <Content>
+        <HeroeSelected />
+      </Content>
     </Container>
   );
 };

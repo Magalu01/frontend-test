@@ -5,6 +5,7 @@ import { BodyList, ImgHero, HeroItem, InfosHero } from './styles';
 const ReleasesOfHeroes = () => {
   return (
     <BodyList>
+      <h4>Últimos lançamentos</h4>
       <HeroItem>
         <ImgHero>
           <img src={teste} alt="star-lord" />

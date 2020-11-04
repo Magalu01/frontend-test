@@ -5,20 +5,23 @@ export const BodyList = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
+  h1 {
+    margin-top: 40px;
+  }
 `;
 export const HeroItem = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  width: 300px;
-  height: 300px;
+  width: 100px;
+  height: 150px;
   flex-direction: column;
 `;
 
 export const ImgHero = styled.div`
   img {
-    width: 250px;
-    height: 250px;
+    width: 100px;
+    height: 150px;
     border-bottom: 6px solid red;
   }
   padding: 25px;
