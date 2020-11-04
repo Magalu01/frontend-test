@@ -1,7 +1,7 @@
 import API from 'axios';
-// import { TYPES } from '../types/Home';
+import { TYPES } from '../types/Home';
 
-// const { HOME } = TYPES;
+const { HOME } = TYPES;
 
 export const getAllHeroes = () => {
   return (dispatch) => {
@@ -9,7 +9,7 @@ export const getAllHeroes = () => {
       .then((response) => {
         console.log('teste redux connected');
         dispatch({
-          type: 'UHUUHUHUH',
+          type: HOME,
           payload: response.data,
         });
       })
