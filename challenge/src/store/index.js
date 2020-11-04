@@ -4,23 +4,14 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
-import createEncryptor from 'redux-persist-transform-encrypt';
 import storage from 'redux-persist/lib/storage';
-import reducers from './reducers';
-
-const encryptor = createEncryptor({
-  secretKey: 'luizalabs',
-  onError: (error) => {
-    console.log(error);
-  },
-});
+import reducers from './reducers/reducers';
 
 const persistConfig = {
   key: 'root',
   timeout: 10000,
   storage,
   whitelist: ['authentication', 'filter'],
-  transforms: [encryptor],
   version: 1,
 };
 

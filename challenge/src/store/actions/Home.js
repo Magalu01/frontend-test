@@ -1,8 +1,11 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
-import { TYPES } from '../types/Home';
+// import API from 'axios';
+// import { TYPES } from '../types/Home';
+
+// const { HOME } = TYPES;
 
 export const getAllHeroes = () => {
-  return (dispatch) => {
-
-  }
-}
+  console.log('teste redux connected');
+};

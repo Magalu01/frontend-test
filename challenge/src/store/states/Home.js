@@ -1,4 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-export const HOME_STATE = {
+export const INITIAL_STATE = {
   home: {},
 };
