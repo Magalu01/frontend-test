@@ -25,13 +25,13 @@ export const HeaderTitle = styled.div`
       height: 60px;
       width: 900px;
       border: none;
-      background: #fdecec;
+      background: #fff;
       text-indent: 80px;
       font-size: 18px;
-      text-decoration-color: red;
-      color: #ff1510;
+      text-decoration-color: #8c8c8c;
+      color: #8c8c8c;
       &::-webkit-input-placeholder {
-        color: #ff1510;
+        color: #8c8c8c;
       }
     }
   }
