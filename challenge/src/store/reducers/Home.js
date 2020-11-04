@@ -6,7 +6,7 @@ const { HOME } = TYPES;
 export default (state = INITIAL_STATE.home, action) => {
   switch (action.type) {
     case HOME:
-      return { ...state, payload: action.payload };
+      return { ...state, home: action.payload };
     default:
       return state;
   }

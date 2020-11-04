@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import React, { useEffect, useSelector } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllHeroes } from '../../store/actions/Home';
 
 // import { Container } from './styles';
@@ -8,12 +8,11 @@ import { getAllHeroes } from '../../store/actions/Home';
 const Home = () => {
   const dispatch = useDispatch();
 
-  const selector = useSelector((state) => {
-    console.log(state);
-  });
+  const selector = useSelector((state) => state);
   console.log(selector);
-  useEffect(() => {
-    dispatch(getAllHeroes());
+
+  useEffect(async () => {
+    await dispatch(getAllHeroes());
   }, []);
 
   return <div />;

@@ -8,10 +8,9 @@ import { store } from './store/index';
 const App = () => {
   return (
     <Provider store={store}>
-      <Header>
-        <GlobalStyle />
-        <Routes />
-      </Header>
+      <Header />
+      <GlobalStyle />
+      <Routes />
     </Provider>
   );
 };
