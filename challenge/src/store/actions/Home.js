@@ -1,6 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable no-console */
-/* eslint-disable import/no-unresolved */
 import API from 'axios';
 // import { TYPES } from '../types/Home';
 
