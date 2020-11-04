@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BodyList = styled.div`
-  margin-top: 40px;
+  margin-top: 120px;
   display: flex;
   justify-content: center;
   align-content: center;

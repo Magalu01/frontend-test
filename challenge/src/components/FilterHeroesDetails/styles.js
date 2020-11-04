@@ -5,7 +5,7 @@ export const HeaderTitle = styled.div`
   justify-content: end;
   align-items: center;
   img {
-    height: 80px;
+    height: 100px;
   }
   div {
     max-width: 1280px;

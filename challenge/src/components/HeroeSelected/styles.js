@@ -9,5 +9,18 @@ export const Container = styled.div`
 export const ContentByHero = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 100vh;
 `;
+
+export const LeftItem = styled.div`
+  width: 250px;
+`;
+
+export const RightItem = styled.div``;
+
+export const HeroTitle = styled.div`
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const InfoHero = styled.div``;
