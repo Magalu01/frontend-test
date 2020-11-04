@@ -24,7 +24,7 @@ const ListOfHeroes = () => {
           <Ordenable>
             <img src={iconHero} alt="" />
             <h4>Ordenar por nome - A/Z</h4>
-            <SwitchButton>{'Button'}</SwitchButton>
+            <SwitchButton onColor={'#ff1510'} />
           </Ordenable>
           <Favorites>
             <img src={iconHeart} alt="" />
@@ -32,7 +32,18 @@ const ListOfHeroes = () => {
           </Favorites>
         </RightTitle>
       </TitleList>
-      <BodyList />
+      <br />
+      <BodyList>
+        <div>
+          <div>
+            <img src="" alt="" />
+          </div>
+          <div>
+            <h4>Star- Lord</h4>
+            <button>Like</button>
+          </div>
+        </div>
+      </BodyList>
     </List>
   );
 };

@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import Switch from 'react-switch';
 
 export const List = styled.div`
   display: flex;
   justify-content: center;
   width: 1000px;
   margin-top: 30px;
+  flex-direction: column;
 `;
 
 export const TitleList = styled.div`
@@ -45,10 +47,10 @@ export const Ordenable = styled.div`
   }
 `;
 
-export const SwitchButton = styled.button`
+export const SwitchButton = styled(Switch)`
   width: 60px;
   height: 50px;
-  margin-top: -15px;
+  margin-top: -5px;
 `;
 
 export const Favorites = styled.div`
@@ -65,4 +67,8 @@ export const Favorites = styled.div`
   }
 `;
 
-export const BodyList = styled.div``;
+export const BodyList = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+`;

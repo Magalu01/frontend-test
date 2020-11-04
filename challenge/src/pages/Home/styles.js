@@ -17,6 +17,5 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  height: 100%;
   margin-top: 40px;
 `;
