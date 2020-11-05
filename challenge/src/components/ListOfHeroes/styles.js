@@ -87,6 +87,7 @@ export const HeroItem = styled.div`
 `;
 
 export const ImgHero = styled.div`
+  cursor: pointer;
   img {
     width: 250px;
     height: 250px;

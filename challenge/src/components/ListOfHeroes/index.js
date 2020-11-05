@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import iconHeart from '../../assets/icones/heart/Path.png';
 import iconNoBoardHeart from '../../assets/icones/heart/Path Copy 2.png';
 import iconHero from '../../assets/icones/heroi/noun_Superhero_2227044.png';
@@ -29,6 +30,7 @@ const ListOfHeroes = ({
   myFavorites,
 }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { favorites } = useSelector((state) => state.heroes);
   const [heroesSorter, setHeroesSorter] = useState([]);
 
@@ -114,7 +116,10 @@ const ListOfHeroes = ({
           ? heroes.map((h) => {
               const { path, extension } = h.thumbnail;
               return (
-                <HeroItem key={h.id}>
+                <HeroItem
+                  key={h.id}
+                  onClick={() => history.push(`/details/${h.id}`)}
+                >
                   <ImgHero>
                     <img src={`${path}.${extension}`} alt={h.name} />
                   </ImgHero>
