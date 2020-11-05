@@ -1,8 +1,8 @@
 import API from 'axios';
-import { TYPES } from '../types/Home';
+import { TYPES } from '../types/Heroes';
 import url from '../../services/api';
 
-const { HOME } = TYPES;
+const { Heroes } = TYPES;
 
 export const getAllHeroes = () => {
   return (dispatch) => {
@@ -12,9 +12,11 @@ export const getAllHeroes = () => {
       }&hash=${process.env.REACT_APP_HASH}&limit=${20}`
     )
       .then((response) => {
+        const { data } = response.data;
+        const { results } = data;
         dispatch({
-          type: HOME,
-          payload: response.data,
+          type: Heroes,
+          payload: results,
         });
       })
       .catch((e) => {

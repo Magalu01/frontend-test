@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import home from './Home';
+import heroes from './Heroes';
 
 const reducers = combineReducers({
-  home,
+  heroes,
 });
 
 export default (state, action) => reducers(state, action);
