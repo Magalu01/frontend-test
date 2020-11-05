@@ -8,11 +8,6 @@ import { HeaderTitle } from './styles';
 
 const FilterHeroes = () => {
   const dispatch = useDispatch();
-
-  const filteringHero = (val) => {
-    dispatch(getAllHeroes(val));
-  };
-
   return (
     <HeaderTitle>
       <img src={logo} alt="Logo da marvel" />
@@ -26,7 +21,7 @@ const FilterHeroes = () => {
         <input
           type="text"
           placeholder="Procure por heróis"
-          onChange={(e) => filteringHero(e.target.value)}
+          onChange={(e) => dispatch(getAllHeroes(e.target.value))}
         />
       </div>
     </HeaderTitle>
