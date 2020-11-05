@@ -57,8 +57,8 @@ const ListOfHeroes = ({ heroes, setOrder, order }) => {
               offHandleColor={'#fff'}
               uncheckedIcon={false}
               checkedIcon={false}
-              boxShadow={false}
-              activeBoxShadow={false}
+              boxShadow={''}
+              activeBoxShadow={''}
               onChange={(e) => changeOrder(e)}
               checked={order}
             />
