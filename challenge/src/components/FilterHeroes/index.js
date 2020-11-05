@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import logo from '../../assets/logo/Group.png';
 import lupa from '../../assets/busca/Lupa/Shape.png';
 
 import { HeaderTitle } from './styles';
 
-const FilterHeroes = () => {
+const FilterHeroes = ({ heroes }) => {
+  console.log(heroes);
   return (
     <HeaderTitle>
       <img src={logo} alt="Logo da marvel" />

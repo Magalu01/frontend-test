@@ -82,7 +82,7 @@ export const HeroItem = styled.div`
   width: 300px;
   height: 300px;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 `;
 
 export const ImgHero = styled.div`

@@ -19,11 +19,12 @@ const Home = () => {
   return (
     <Container>
       <Header>
-        <FilterHeroes />
+        <FilterHeroes heroes={heroes} />
       </Header>
       <Content>
         <ListOfHeroes heroes={heroes} setOrder={setOrder} order={order} />
       </Content>
+      <footer></footer>
     </Container>
   );
 };
