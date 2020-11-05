@@ -9,9 +9,16 @@ export const Container = styled.div`
 export const ContentByHero = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 
-export const RightItem = styled.div``;
+export const RightItem = styled.div`
+  img {
+    height: 500px;
+    width: 500px;
+  }
+`;
 
 export const LeftItem = styled.div`
   width: 300px;

@@ -19,7 +19,11 @@ import {
   ImgHero,
   InfosHero,
 } from './styles';
-import { getAllHeroes, favoriteHeroes } from '../../store/actions/Heroes';
+import {
+  getAllHeroes,
+  favoriteHeroes,
+  selectedHero,
+} from '../../store/actions/Heroes';
 
 const ListOfHeroes = ({
   heroes,
@@ -84,6 +88,12 @@ const ListOfHeroes = ({
     }
   };
 
+  const heroSelected = (id) => {
+    const findHero = heroes.find((p) => p.id === id);
+    dispatch(selectedHero(findHero));
+    history.push(`/details/${id}`);
+  };
+
   return (
     <List>
       <TitleList>
@@ -116,10 +126,7 @@ const ListOfHeroes = ({
           ? heroes.map((h) => {
               const { path, extension } = h.thumbnail;
               return (
-                <HeroItem
-                  key={h.id}
-                  onClick={() => history.push(`/details/${h.id}`)}
-                >
+                <HeroItem key={h.id} onClick={() => heroSelected(h.id)}>
                   <ImgHero>
                     <img src={`${path}.${extension}`} alt={h.name} />
                   </ImgHero>

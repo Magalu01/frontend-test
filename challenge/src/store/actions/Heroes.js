@@ -2,7 +2,7 @@ import API from 'axios';
 import { TYPES } from '../types/Heroes';
 import url from '../../services/api';
 
-const { Heroes, Favorites } = TYPES;
+const { Heroes, Favorites, GetHeroById, Comics } = TYPES;
 
 export const getAllHeroes = (name) => {
   const nameParam = name ? `&name=${name}` : '';
@@ -32,5 +32,52 @@ export const favoriteHeroes = (params) => {
       type: Favorites,
       payload: params,
     });
+  };
+};
+
+export const selectedHero = (params) => {
+  return (dispatch) => {
+    dispatch({
+      type: GetHeroById,
+      payload: params,
+    });
+  };
+};
+
+export const getHeroById = (id) => {
+  return (dispatch) => {
+    API.get(
+      `${url}/characters?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${process.env.REACT_APP_PUB_KEY}&hash=${process.env.REACT_APP_HASH}&characterId=${id}`
+    )
+      .then((response) => {
+        const { data } = response.data;
+        const { results } = data;
+        dispatch({
+          type: GetHeroById,
+          payload: results,
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+};
+
+export const getComics = (id) => {
+  return (dispatch) => {
+    API.get(
+      `${url}/characters?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${process.env.REACT_APP_PUB_KEY}&hash=${process.env.REACT_APP_HASH}&characterId=${id}/comics`
+    )
+      .then((response) => {
+        const { data } = response.data;
+        const { results } = data;
+        dispatch({
+          type: Comics,
+          payload: results,
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 };
