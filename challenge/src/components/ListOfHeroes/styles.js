@@ -4,7 +4,7 @@ import Switch from 'react-switch';
 export const List = styled.div`
   display: flex;
   justify-content: center;
-  width: 1000px;
+  width: 1360px;
   margin-top: 30px;
   flex-direction: column;
 `;
@@ -72,6 +72,8 @@ export const BodyList = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-direction: column;
+  flex-flow: wrap;
 `;
 export const HeroItem = styled.div`
   display: flex;
@@ -80,6 +82,7 @@ export const HeroItem = styled.div`
   width: 300px;
   height: 300px;
   flex-direction: column;
+  margin-bottom: 15px;
 `;
 
 export const ImgHero = styled.div`

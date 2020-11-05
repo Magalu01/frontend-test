@@ -1,8 +1,9 @@
-import React from 'react';
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from 'react';
 import iconHeart from '../../assets/icones/heart/Path.png';
 import iconNoBoardHeart from '../../assets/icones/heart/Path Copy 2.png';
 import iconHero from '../../assets/icones/heroi/noun_Superhero_2227044.png';
-import teste from '../../assets/star-lord.jpeg';
 
 import {
   List,
@@ -18,7 +19,29 @@ import {
   InfosHero,
 } from './styles';
 
-const ListOfHeroes = () => {
+const ListOfHeroes = ({ heroes, setOrder, order }) => {
+  const [heroesSorter, setHeroesSorter] = useState([]);
+
+  useEffect(() => {
+    setHeroesSorter(heroes);
+  }, [heroesSorter, setHeroesSorter]);
+
+  const changeOrder = (ord) => {
+    if (ord) {
+      heroes = heroes
+        ? heroes.sort((a, b) => b.name - a.name || b.name.localeCompare(a.name))
+        : [];
+      setHeroesSorter(heroes);
+      setOrder(ord);
+    } else {
+      heroes = heroes
+        ? heroes.sort((a, b) => a.name - b.name || a.name.localeCompare(b.name))
+        : [];
+      setHeroesSorter(heroes);
+      setOrder(ord);
+    }
+  };
+
   return (
     <List>
       <TitleList>
@@ -29,7 +52,16 @@ const ListOfHeroes = () => {
           <Ordenable>
             <img src={iconHero} alt="" />
             <h4>Ordenar por nome - A/Z</h4>
-            <SwitchButton onColor={'#ff1510'} />
+            <SwitchButton
+              onColor={'#ff1510'}
+              offHandleColor={'#fff'}
+              uncheckedIcon={false}
+              checkedIcon={false}
+              boxShadow={false}
+              activeBoxShadow={false}
+              onChange={(e) => changeOrder(e)}
+              checked={order}
+            />
           </Ordenable>
           <Favorites>
             <img src={iconHeart} alt="" />
@@ -38,50 +70,24 @@ const ListOfHeroes = () => {
         </RightTitle>
       </TitleList>
       <BodyList>
-        <HeroItem>
-          <ImgHero>
-            <img src={teste} alt="star-lord" />
-          </ImgHero>
-          <InfosHero>
-            <h4>Star- Lord</h4>
-            <button>
-              <img src={iconNoBoardHeart} alt="" />
-            </button>
-          </InfosHero>
-        </HeroItem>
-        <HeroItem>
-          <ImgHero>
-            <img src={teste} alt="star-lord" />
-          </ImgHero>
-          <InfosHero>
-            <h4>Star- Lord</h4>
-            <button>
-              <img src={iconNoBoardHeart} alt="" />
-            </button>
-          </InfosHero>
-        </HeroItem>
-        <HeroItem>
-          <ImgHero>
-            <img src={teste} alt="star-lord" />
-          </ImgHero>
-          <InfosHero>
-            <h4>Star- Lord</h4>
-            <button>
-              <img src={iconNoBoardHeart} alt="" />
-            </button>
-          </InfosHero>
-        </HeroItem>
-        <HeroItem>
-          <ImgHero>
-            <img src={teste} alt="star-lord" />
-          </ImgHero>
-          <InfosHero>
-            <h4>Star- Lord</h4>
-            <button>
-              <img src={iconNoBoardHeart} alt="" />
-            </button>
-          </InfosHero>
-        </HeroItem>
+        {heroes && heroes
+          ? heroes.map((h) => {
+              const { path, extension } = h.thumbnail;
+              return (
+                <HeroItem key={h.id}>
+                  <ImgHero>
+                    <img src={`${path}.${extension}`} alt={h.name} />
+                  </ImgHero>
+                  <InfosHero>
+                    <h4>{h.name}</h4>
+                    <button>
+                      <img src={iconNoBoardHeart} alt="icons-heart" />
+                    </button>
+                  </InfosHero>
+                </HeroItem>
+              );
+            })
+          : []}
       </BodyList>
     </List>
   );

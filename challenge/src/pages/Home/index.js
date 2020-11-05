@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FilterHeroes from '../../components/FilterHeroes';
 import ListOfHeroes from '../../components/ListOfHeroes';
@@ -7,10 +7,10 @@ import { getAllHeroes } from '../../store/actions/Heroes';
 import { Container, Header, Content } from './styles';
 
 const Home = () => {
+  const [order, setOrder] = useState(false);
   const dispatch = useDispatch();
 
   const { heroes } = useSelector((state) => state.heroes);
-  console.log(heroes);
 
   useEffect(() => {
     dispatch(getAllHeroes());
@@ -22,7 +22,7 @@ const Home = () => {
         <FilterHeroes />
       </Header>
       <Content>
-        <ListOfHeroes />
+        <ListOfHeroes heroes={heroes} setOrder={setOrder} order={order} />
       </Content>
     </Container>
   );
