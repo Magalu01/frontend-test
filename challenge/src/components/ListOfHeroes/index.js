@@ -65,6 +65,9 @@ const ListOfHeroes = ({
       if (favorites.length < 5) {
         dispatch(favoriteHeroes([...favorites, findHero]));
       }
+    } else {
+      const newItem = favorites.filter((f) => f.id !== item);
+      dispatch(favoriteHeroes([...newItem]));
     }
   };
 
@@ -107,7 +110,7 @@ const ListOfHeroes = ({
         </RightTitle>
       </TitleList>
       <BodyList>
-        {heroes && heroes
+        {heroes.length > 0
           ? heroes.map((h) => {
               const { path, extension } = h.thumbnail;
               return (
