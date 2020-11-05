@@ -9,6 +9,7 @@ import { Container, Header, Content } from './styles';
 const Home = () => {
   const [order, setOrder] = useState(false);
   const [allHeroes, setAllHeroes] = useState([]);
+  const [myFavorites, setMyFavorites] = useState(false);
 
   const { heroes } = useSelector((state) => state.heroes);
   const dispatch = useDispatch();
@@ -32,6 +33,8 @@ const Home = () => {
           setAllHeroes={setAllHeroes}
           setOrder={setOrder}
           order={order}
+          myFavorites={myFavorites}
+          setMyFavorites={setMyFavorites}
         />
       </Content>
       <footer></footer>

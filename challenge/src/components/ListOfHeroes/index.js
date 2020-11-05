@@ -18,16 +18,29 @@ import {
   ImgHero,
   InfosHero,
 } from './styles';
-import { favoriteHeroes } from '../../store/actions/Heroes';
+import { getAllHeroes, favoriteHeroes } from '../../store/actions/Heroes';
 
-const ListOfHeroes = ({ heroes, setAllHeroes, setOrder, order }) => {
+const ListOfHeroes = ({
+  heroes,
+  setAllHeroes,
+  setOrder,
+  order,
+  setMyFavorites,
+  myFavorites,
+}) => {
   const dispatch = useDispatch();
   const { favorites } = useSelector((state) => state.heroes);
   const [heroesSorter, setHeroesSorter] = useState([]);
 
   useEffect(() => {
     setHeroesSorter(heroes);
-  }, [heroesSorter, setHeroesSorter, setAllHeroes]);
+  }, [
+    heroesSorter,
+    setHeroesSorter,
+    setAllHeroes,
+    myFavorites,
+    setMyFavorites,
+  ]);
 
   const changeOrder = (ord) => {
     if (ord) {
@@ -56,7 +69,14 @@ const ListOfHeroes = ({ heroes, setAllHeroes, setOrder, order }) => {
   };
 
   const favoritesSelected = () => {
-    setAllHeroes(favorites || heroes);
+    if (!myFavorites) {
+      setMyFavorites(true);
+      setAllHeroes(favorites || heroes);
+    } else {
+      setMyFavorites(false);
+      dispatch(getAllHeroes());
+      setAllHeroes(heroes);
+    }
   };
 
   return (
