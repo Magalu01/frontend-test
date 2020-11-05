@@ -2,7 +2,7 @@ import API from 'axios';
 import { TYPES } from '../types/Heroes';
 import url from '../../services/api';
 
-const { Heroes } = TYPES;
+const { Heroes, Favorites } = TYPES;
 
 export const getAllHeroes = (name) => {
   const nameParam = name ? `&name=${name}` : '';
@@ -23,5 +23,14 @@ export const getAllHeroes = (name) => {
       .catch((e) => {
         console.log(e);
       });
+  };
+};
+
+export const favoriteHeroes = (params) => {
+  return (dispatch) => {
+    dispatch({
+      type: Favorites,
+      payload: params,
+    });
   };
 };

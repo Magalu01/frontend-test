@@ -8,13 +8,18 @@ import { Container, Header, Content } from './styles';
 
 const Home = () => {
   const [order, setOrder] = useState(false);
-  const dispatch = useDispatch();
+  const [allHeroes, setAllHeroes] = useState([]);
 
   const { heroes } = useSelector((state) => state.heroes);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllHeroes());
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    setAllHeroes(heroes);
+  }, [heroes]);
 
   return (
     <Container>
@@ -22,7 +27,12 @@ const Home = () => {
         <FilterHeroes heroes={heroes} />
       </Header>
       <Content>
-        <ListOfHeroes heroes={heroes} setOrder={setOrder} order={order} />
+        <ListOfHeroes
+          heroes={allHeroes}
+          setAllHeroes={setAllHeroes}
+          setOrder={setOrder}
+          order={order}
+        />
       </Content>
       <footer></footer>
     </Container>

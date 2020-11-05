@@ -57,6 +57,7 @@ export const Favorites = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
+  cursor: pointer;
   img {
     height: 15px;
     width: 15px;

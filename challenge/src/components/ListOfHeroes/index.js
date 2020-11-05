@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import iconHeart from '../../assets/icones/heart/Path.png';
 import iconNoBoardHeart from '../../assets/icones/heart/Path Copy 2.png';
 import iconHero from '../../assets/icones/heroi/noun_Superhero_2227044.png';
-
 import {
   List,
   TitleList,
@@ -18,13 +18,16 @@ import {
   ImgHero,
   InfosHero,
 } from './styles';
+import { favoriteHeroes } from '../../store/actions/Heroes';
 
-const ListOfHeroes = ({ heroes, setOrder, order }) => {
+const ListOfHeroes = ({ heroes, setAllHeroes, setOrder, order }) => {
+  const dispatch = useDispatch();
+  const { favorites } = useSelector((state) => state.heroes);
   const [heroesSorter, setHeroesSorter] = useState([]);
 
   useEffect(() => {
     setHeroesSorter(heroes);
-  }, [heroesSorter, setHeroesSorter]);
+  }, [heroesSorter, setHeroesSorter, setAllHeroes]);
 
   const changeOrder = (ord) => {
     if (ord) {
@@ -40,6 +43,20 @@ const ListOfHeroes = ({ heroes, setOrder, order }) => {
       setHeroesSorter(heroes);
       setOrder(ord);
     }
+  };
+
+  const checkFavorite = (item) => {
+    const findHero = heroes.find((p) => p.id === item);
+    const findExistInFavorites = favorites.find((p) => p.id === item);
+    if (!findExistInFavorites) {
+      if (favorites.length < 5) {
+        dispatch(favoriteHeroes([...favorites, findHero]));
+      }
+    }
+  };
+
+  const favoritesSelected = () => {
+    setAllHeroes(favorites || heroes);
   };
 
   return (
@@ -63,8 +80,8 @@ const ListOfHeroes = ({ heroes, setOrder, order }) => {
               checked={order}
             />
           </Ordenable>
-          <Favorites>
-            <img src={iconHeart} alt="" />
+          <Favorites onClick={() => favoritesSelected()}>
+            <img src={iconHeart} alt="heart" />
             <h4>Somente favoritos</h4>
           </Favorites>
         </RightTitle>
@@ -80,7 +97,7 @@ const ListOfHeroes = ({ heroes, setOrder, order }) => {
                   </ImgHero>
                   <InfosHero>
                     <h4>{h.name}</h4>
-                    <button>
+                    <button onClick={() => checkFavorite(h.id)}>
                       <img src={iconNoBoardHeart} alt="icons-heart" />
                     </button>
                   </InfosHero>
