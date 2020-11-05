@@ -15,7 +15,7 @@ const FilterHeroes = () => {
       </h4>
       <div>
         <img src={lupa} alt="lupa" />
-        <input type="text" placeholder="Procures por heróis" />
+        <input type="text" placeholder="Procure por heróis" />
       </div>
     </HeaderTitle>
   );
