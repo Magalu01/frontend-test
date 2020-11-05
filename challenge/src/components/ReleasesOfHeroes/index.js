@@ -1,75 +1,50 @@
-import React from 'react';
-import teste from '../../assets/star-lord.jpeg';
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-key */
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BodyList, ImgHero, HeroItem, InfosHero } from './styles';
+import { getComics } from '../../store/actions/Heroes';
 
-const ReleasesOfHeroes = () => {
+// eslint-disable-next-line consistent-return
+const ReleasesOfHeroes = ({ idHero, comicsByGet }) => {
+  const [comic, setComic] = useState([]);
+  const dispatch = useDispatch();
+
+  const { comicsBy } = useSelector((state) => state.heroes);
+
+  useEffect(() => {
+    if (idHero) {
+      dispatch(getComics(idHero));
+    } else {
+      setComic(comicsByGet);
+    }
+  }, [comic]);
+
   return (
     <BodyList>
-      <h4>Últimos lançamentos</h4>
+      <div>
+        <h4>Últimos lançamentos</h4>
+      </div>
       <HeroItem>
-        <ImgHero>
-          <img src={teste} alt="star-lord" />
-        </ImgHero>
-        <InfosHero>
-          <h4>Star- Lord</h4>
-        </InfosHero>
-      </HeroItem>
-      <HeroItem>
-        <ImgHero>
-          <img src={teste} alt="star-lord" />
-        </ImgHero>
-        <InfosHero>
-          <h4>Star- Lord</h4>
-        </InfosHero>
-      </HeroItem>
-      <HeroItem>
-        <ImgHero>
-          <img src={teste} alt="star-lord" />
-        </ImgHero>
-        <InfosHero>
-          <h4>Star- Lord</h4>
-        </InfosHero>
-      </HeroItem>
-      <HeroItem>
-        <ImgHero>
-          <img src={teste} alt="star-lord" />
-        </ImgHero>
-        <InfosHero>
-          <h4>Star- Lord</h4>
-        </InfosHero>
+        {comicsBy && comicsBy.length > 0
+          ? comicsBy.map((p) => {
+              const { thumbnail } = p;
+              const { path, extension } = thumbnail;
+              return (
+                <div>
+                  <ImgHero>
+                    <img src={`${path}.${extension}`} alt={p.title} />
+                  </ImgHero>
+                  <InfosHero>
+                    <h4>{p.title}</h4>
+                  </InfosHero>
+                </div>
+              );
+            })
+          : []}
       </HeroItem>
     </BodyList>
   );
 };
 
 export default ReleasesOfHeroes;
-
-// /* eslint-disable react/prop-types */
-// /* eslint-disable react/jsx-key */
-// import React from 'react';
-// import teste from '../../assets/star-lord.jpeg';
-// import { BodyList, ImgHero, HeroItem, InfosHero } from './styles';
-
-// const ReleasesOfHeroes = ({ comics }) => {
-//   return (
-//     <BodyList>
-//       <h4>Últimos lançamentos</h4>
-//       <HeroItem>
-//         {comics && comics
-//           ? comics.map((c) => (
-//               <div>
-//                 <ImgHero>
-//                   <img src={teste} alt="star-lord" />
-//                 </ImgHero>
-//                 <InfosHero>
-//                   <h4>Star- Lord</h4>
-//                 </InfosHero>
-//               </div>
-//             ))
-//           : ''}
-//       </HeroItem>
-//     </BodyList>
-//   );
-// };
-
-// export default ReleasesOfHeroes;

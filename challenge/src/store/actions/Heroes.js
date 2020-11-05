@@ -66,7 +66,7 @@ export const getHeroById = (id) => {
 export const getComics = (id) => {
   return (dispatch) => {
     API.get(
-      `${url}/characters?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${process.env.REACT_APP_PUB_KEY}&hash=${process.env.REACT_APP_HASH}&characterId=${id}/comics`
+      `${url}/characters/${id}/comics?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${process.env.REACT_APP_PUB_KEY}&hash=${process.env.REACT_APP_HASH}`
     )
       .then((response) => {
         const { data } = response.data;

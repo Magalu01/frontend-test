@@ -4,7 +4,9 @@ export const BodyList = styled.div`
   margin-top: 120px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-content: center;
+
   h1 {
     margin-top: 40px;
   }
@@ -12,10 +14,15 @@ export const BodyList = styled.div`
 export const HeroItem = styled.div`
   display: flex;
   align-items: flex-end;
-  justify-content: center;
-  width: 100px;
-  height: 150px;
+  justify-content: end;
   flex-direction: column;
+  flex-flow: wrap;
+  div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 `;
 
 export const ImgHero = styled.div`
@@ -34,6 +41,7 @@ export const InfosHero = styled.div`
   margin-top: -25px;
   padding: 25px;
   h4 {
+    font-size: 15px;
     color: #404040;
   }
   button {

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ReleasesOfHeroes from '../ReleasesOfHeroes';
 import {
   Container,
@@ -20,12 +21,21 @@ import iconHeart from '../../assets/icones/heart/Path.png';
 import Video from '../../assets/icones/video/Shape.png';
 import Book from '../../assets/icones/book/Group.png';
 import Star from '../../assets/review/Group 4.png';
+import { getComics } from '../../store/actions/Heroes';
 
 const HeroeSelected = ({ hero }) => {
   const { id, name, series, comics, description, thumbnail } = hero;
   const itemsStories = comics;
   const { available } = series;
   const { path, extension } = thumbnail;
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { comicsBy } = useSelector((state) => state.heroes);
+
+  useEffect(() => {
+    dispatch(getComics(id));
+  }, []);
 
   return (
     <Container>
@@ -67,7 +77,7 @@ const HeroeSelected = ({ hero }) => {
           <img src={`${path}.${extension}`} alt="" />
         </RightItem>
       </ContentByHero>
-      <ReleasesOfHeroes idHero={id} />
+      <ReleasesOfHeroes idHero={id} comicsByGet={comicsBy} />
     </Container>
   );
 };

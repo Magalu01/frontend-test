@@ -1,7 +1,7 @@
 import { TYPES } from '../types/Heroes';
 import { INITIAL_STATE } from '../states/Heroes';
 
-const { Heroes, Favorites, GetHeroById } = TYPES;
+const { Heroes, Favorites, GetHeroById, Comics } = TYPES;
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -11,6 +11,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, favorites: action.payload };
     case GetHeroById:
       return { ...state, hero: action.payload };
+    case Comics:
+      return { ...state, comicsBy: action.payload };
     default:
       return state;
   }
