@@ -70,10 +70,14 @@ const ListOfHeroes = ({
     const findExistInFavorites = favorites.find((p) => p.id === item);
     if (!findExistInFavorites) {
       if (favorites.length < 5) {
+        favorites.sort(
+          (a, b) => a.name - b.name || a.name.localeCompare(b.name)
+        );
         dispatch(favoriteHeroes([...favorites, findHero]));
       }
     } else {
       const newItem = favorites.filter((f) => f.id !== item);
+      newItem.sort((a, b) => a.name - b.name || a.name.localeCompare(b.name));
       dispatch(favoriteHeroes([...newItem]));
     }
   };
