@@ -28,6 +28,13 @@ const HeroeSelected = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { location } = history;
+  // eslint-disable-next-line no-unused-expressions
+  location.state !== undefined ||
+  location.pathname === '/details/' ||
+  location.state === ''
+    ? ''
+    : history.push('/');
+
   const { comicsBy, hero } = useSelector((state) => state.heroes);
 
   useEffect(() => {
@@ -35,10 +42,14 @@ const HeroeSelected = () => {
       dispatch(getComics(hero.id));
     } else {
       const { state } = location;
-      dispatch(getHeroById(state.id));
-      dispatch(getComics(state.id));
+      if (state) {
+        dispatch(getHeroById(state.id));
+        dispatch(getComics(state.id));
+      } else {
+        history.push('/');
+      }
     }
-  }, []);
+  }, [hero]);
 
   let general = {};
 
@@ -113,7 +124,7 @@ const HeroeSelected = () => {
         </RightItem>
       </ContentByHero>
       <ReleasesOfHeroes
-        idHero={location.state.id}
+        idHero={location.state ? location.state.id : ''}
         comicsByGet={comicsBy}
         history={history}
       />

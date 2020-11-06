@@ -18,8 +18,12 @@ const ReleasesOfHeroes = ({ idHero, comicsByGet, history }) => {
       dispatch(getComics(idHero));
     } else {
       const { state } = location;
-      dispatch(getComics(state.id));
-      setComic(comicsByGet);
+      if (state) {
+        dispatch(getComics(state.id));
+        setComic(comicsByGet);
+      } else {
+        history.push('/');
+      }
     }
   }, [comic]);
 

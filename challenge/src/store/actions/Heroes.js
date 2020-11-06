@@ -81,3 +81,25 @@ export const getComics = (id) => {
       });
   };
 };
+
+export const getHeroByDeatil = (name) => {
+  const nameParam = name ? `&name=${name}` : '';
+  return (dispatch) => {
+    API.get(
+      `${url}/characters?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${
+        process.env.REACT_APP_PUB_KEY
+      }&hash=${process.env.REACT_APP_HASH}&limit=${20}${nameParam}`
+    )
+      .then((response) => {
+        const { data } = response.data;
+        const { results } = data;
+        dispatch({
+          type: GetHeroById,
+          payload: results,
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+};
