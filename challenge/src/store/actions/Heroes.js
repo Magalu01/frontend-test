@@ -5,7 +5,7 @@ import url from '../../services/api';
 const { Heroes, Favorites, GetHeroById, Comics } = TYPES;
 
 export const getAllHeroes = (name) => {
-  const nameParam = name ? `&name=${name}` : '';
+  const nameParam = name ? `&nameStartsWith=${name}` : '';
   return (dispatch) => {
     API.get(
       `${url}/characters?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${
@@ -82,8 +82,9 @@ export const getComics = (id) => {
   };
 };
 
-export const getHeroByDeatil = (name) => {
-  const nameParam = name ? `&name=${name}` : '';
+export const getHeroByDetail = (name) => {
+  const nameParam = name ? `&nameStartsWith=${name}` : '';
+
   return (dispatch) => {
     API.get(
       `${url}/characters?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${
@@ -95,7 +96,7 @@ export const getHeroByDeatil = (name) => {
         const { results } = data;
         dispatch({
           type: GetHeroById,
-          payload: results,
+          payload: results[0],
         });
       })
       .catch((e) => {

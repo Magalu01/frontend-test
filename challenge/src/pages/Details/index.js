@@ -1,19 +1,40 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Container, Header, Content } from './styles';
-
 import FilterHeroesDetails from '../../components/FilterHeroesDetails';
 import HeroeSelected from '../../components/HeroeSelected';
+import { getHeroByDetail } from '../../store/actions/Heroes';
 
 const Details = () => {
+  const [heroFilter, setHeroFilter] = useState('');
   const { hero } = useSelector((state) => state.heroes);
+  const [heroSelected, setHeroSelected] = useState({});
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (heroFilter.length >= 4) {
+      dispatch(getHeroByDetail(heroFilter));
+    }
+  }, [heroFilter]);
+
+  useEffect(() => {
+    setHeroSelected(hero);
+    if (hero.id) {
+      const { id } = hero;
+      history.push(`/details/${id}`, { id });
+    }
+  }, [hero]);
+
   return (
     <Container>
       <Header>
-        <FilterHeroesDetails />
+        <FilterHeroesDetails setHeroFilter={setHeroFilter} />
       </Header>
       <Content>
-        <HeroeSelected hero={hero} />
+        <HeroeSelected hero={heroSelected} />
       </Content>
     </Container>
   );
