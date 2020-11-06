@@ -23,17 +23,14 @@ import Book from '../../assets/icones/book/Group.png';
 import Star from '../../assets/review/Group 4.png';
 
 import { getHeroById, getComics } from '../../store/actions/Heroes';
+import redirect from '../../utils/redirect';
 
 const HeroeSelected = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { location } = history;
-  // eslint-disable-next-line no-unused-expressions
-  location.state !== undefined ||
-  location.pathname === '/details/' ||
-  location.state === ''
-    ? ''
-    : history.push('/');
+
+  redirect();
 
   const { comicsBy, hero } = useSelector((state) => state.heroes);
 
