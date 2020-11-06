@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unescaped-entities */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -55,7 +53,6 @@ const HeroeSelected = () => {
     const itemsStories = comics;
     const { available } = series;
     const { path, extension } = thumbnail;
-    // eslint-disable-next-line no-unused-vars
 
     general = {
       name,

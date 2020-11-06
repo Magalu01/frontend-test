@@ -99,7 +99,7 @@ const ListOfHeroes = ({
     <List>
       <TitleList>
         <LeftTitle>
-          <h4>Encontrados 20 heroís</h4>
+          <h4>Encontrados {heroes.length} heroís</h4>
         </LeftTitle>
         <RightTitle>
           <Ordenable>

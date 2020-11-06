@@ -6,6 +6,9 @@ export const HeaderTitle = styled.div`
   align-items: center;
   flex-direction: column;
 
+  img {
+    cursor: pointer;
+  }
   h1 {
     margin-top: 20px;
     color: #404040;
