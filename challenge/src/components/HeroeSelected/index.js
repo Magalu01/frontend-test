@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import ReleasesOfHeroes from '../ReleasesOfHeroes';
 import {
   Container,
@@ -16,50 +17,80 @@ import {
   Date,
   Rating,
 } from './styles';
-
 import iconHeart from '../../assets/icones/heart/Path.png';
 import Video from '../../assets/icones/video/Shape.png';
 import Book from '../../assets/icones/book/Group.png';
 import Star from '../../assets/review/Group 4.png';
-import { getComics } from '../../store/actions/Heroes';
 
-const HeroeSelected = ({ hero }) => {
-  const { id, name, series, comics, description, thumbnail } = hero;
-  const itemsStories = comics;
-  const { available } = series;
-  const { path, extension } = thumbnail;
+import { getHeroById, getComics } from '../../store/actions/Heroes';
 
+const HeroeSelected = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { comicsBy } = useSelector((state) => state.heroes);
+  const { location } = history;
+  const { comicsBy, hero } = useSelector((state) => state.heroes);
 
   useEffect(() => {
-    dispatch(getComics(id));
+    if (hero.id) {
+      dispatch(getComics(hero.id));
+    } else {
+      const { state } = location;
+      dispatch(getHeroById(state.id));
+      dispatch(getComics(state.id));
+    }
   }, []);
+
+  let general = {};
+
+  if (hero.id) {
+    const { name, series, comics, description, thumbnail } = hero;
+    const itemsStories = comics;
+    const { available } = series;
+    const { path, extension } = thumbnail;
+    // eslint-disable-next-line no-unused-vars
+
+    general = {
+      name,
+      series,
+      comics,
+      description,
+      itemsStories,
+      thumbnail,
+      available,
+      path,
+      extension,
+    };
+  }
 
   return (
     <Container>
       <ContentByHero>
         <LeftItem>
           <HeroTitle>
-            <h1>{name || ''}</h1>
+            <h1>{general.name || ''}</h1>
             <img src={iconHeart} alt="heart" />
           </HeroTitle>
           <InfoHero>
-            <p>{description || ''}</p>
+            <p>{general.description || ''}</p>
             <BooksAndMovies>
               <Books>
                 <p>Quadrinhos</p>
                 <div>
                   <img src={Book} alt="" />
-                  <h5>{itemsStories.available || ''}</h5>
+                  {
+                    <h5>
+                      {general && general.itemsStories
+                        ? general.itemsStories.available
+                        : ''}
+                    </h5>
+                  }
                 </div>
               </Books>
               <Movies>
                 <p>Filmes</p>
                 <div>
                   <img src={Video} alt="" />
-                  <h5>{available || ''}</h5>
+                  {<h5>{general.available || ''}</h5>}
                 </div>
               </Movies>
             </BooksAndMovies>
@@ -74,10 +105,18 @@ const HeroeSelected = ({ hero }) => {
           </InfoHero>
         </LeftItem>
         <RightItem>
-          <img src={`${path}.${extension}`} alt="" />
+          {general && general.path && general.extension ? (
+            <img src={`${general.path}.${general.extension}`} alt="" />
+          ) : (
+            <img src={`/`} alt="" />
+          )}
         </RightItem>
       </ContentByHero>
-      <ReleasesOfHeroes idHero={id} comicsByGet={comicsBy} />
+      <ReleasesOfHeroes
+        idHero={location.state.id}
+        comicsByGet={comicsBy}
+        history={history}
+      />
     </Container>
   );
 };

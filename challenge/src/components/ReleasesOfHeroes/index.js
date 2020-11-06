@@ -6,7 +6,8 @@ import { BodyList, ImgHero, HeroItem, InfosHero } from './styles';
 import { getComics } from '../../store/actions/Heroes';
 
 // eslint-disable-next-line consistent-return
-const ReleasesOfHeroes = ({ idHero, comicsByGet }) => {
+const ReleasesOfHeroes = ({ idHero, comicsByGet, history }) => {
+  const { location } = history;
   const [comic, setComic] = useState([]);
   const dispatch = useDispatch();
 
@@ -16,6 +17,8 @@ const ReleasesOfHeroes = ({ idHero, comicsByGet }) => {
     if (idHero) {
       dispatch(getComics(idHero));
     } else {
+      const { state } = location;
+      dispatch(getComics(state.id));
       setComic(comicsByGet);
     }
   }, [comic]);
@@ -31,7 +34,7 @@ const ReleasesOfHeroes = ({ idHero, comicsByGet }) => {
               const { thumbnail } = p;
               const { path, extension } = thumbnail;
               return (
-                <div>
+                <div key={p.id}>
                   <ImgHero>
                     <img src={`${path}.${extension}`} alt={p.title} />
                   </ImgHero>

@@ -47,14 +47,14 @@ export const selectedHero = (params) => {
 export const getHeroById = (id) => {
   return (dispatch) => {
     API.get(
-      `${url}/characters?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${process.env.REACT_APP_PUB_KEY}&hash=${process.env.REACT_APP_HASH}&characterId=${id}`
+      `${url}/characters/${id}?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${process.env.REACT_APP_PUB_KEY}&hash=${process.env.REACT_APP_HASH}`
     )
       .then((response) => {
         const { data } = response.data;
         const { results } = data;
         dispatch({
           type: GetHeroById,
-          payload: results,
+          payload: results[0],
         });
       })
       .catch((e) => {

@@ -91,7 +91,7 @@ const ListOfHeroes = ({
   const heroSelected = (id) => {
     const findHero = heroes.find((p) => p.id === id);
     dispatch(selectedHero(findHero));
-    history.push(`/details/${id}`);
+    history.push(`/details/${id}`, { id });
   };
 
   return (
