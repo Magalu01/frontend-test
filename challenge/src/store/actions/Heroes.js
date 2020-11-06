@@ -96,7 +96,7 @@ export const getHeroByDetail = (name) => {
         const { results } = data;
         dispatch({
           type: GetHeroById,
-          payload: results[0],
+          payload: results[0] || results,
         });
       })
       .catch((e) => {
