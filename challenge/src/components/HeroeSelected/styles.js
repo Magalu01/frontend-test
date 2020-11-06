@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 1280px;
 `;
 
 export const ContentByHero = styled.div`

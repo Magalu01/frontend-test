@@ -15,7 +15,7 @@ const Details = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if (heroFilter.length >= 4) {
+    if (heroFilter) {
       dispatch(getHeroByDetail(heroFilter));
     }
   }, [heroFilter]);
@@ -25,13 +25,15 @@ const Details = () => {
     if (hero.id) {
       const { id } = hero;
       history.push(`/details/${id}`, { id });
+    } else {
+      history.push(`/`);
     }
   }, [hero]);
 
   return (
     <Container>
       <Header>
-        <FilterHeroesDetails setHeroFilter={setHeroFilter} />
+        <FilterHeroesDetails setHeroFilter={setHeroFilter} history={history} />
       </Header>
       <Content>
         <HeroeSelected hero={heroSelected} />

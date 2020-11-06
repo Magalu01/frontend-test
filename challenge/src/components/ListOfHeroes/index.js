@@ -19,6 +19,7 @@ import {
   ImgHero,
   InfosHero,
 } from './styles';
+
 import {
   getAllHeroes,
   favoriteHeroes,
@@ -126,14 +127,21 @@ const ListOfHeroes = ({
           ? heroes.map((h) => {
               const { path, extension } = h.thumbnail;
               return (
-                <HeroItem key={h.id} onClick={() => heroSelected(h.id)}>
+                <HeroItem key={h.id}>
                   <ImgHero>
-                    <img src={`${path}.${extension}`} alt={h.name} />
+                    <img
+                      src={`${path}.${extension}`}
+                      alt={h.name}
+                      onClick={() => heroSelected(h.id)}
+                    />
                   </ImgHero>
                   <InfosHero>
                     <h4>{h.name}</h4>
                     <button onClick={() => checkFavorite(h.id)}>
-                      <img src={iconNoBoardHeart} alt="icons-heart" />
+                      <img
+                        src={iconNoBoardHeart || iconHeart}
+                        alt="icons-heart"
+                      />
                     </button>
                   </InfosHero>
                 </HeroItem>

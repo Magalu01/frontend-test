@@ -68,6 +68,8 @@ const HeroeSelected = () => {
       path,
       extension,
     };
+  } else {
+    history.push('/');
   }
 
   return (

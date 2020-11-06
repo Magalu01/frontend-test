@@ -4,10 +4,10 @@ import logo from '../../assets/logo/Group.png';
 import lupa from '../../assets/busca/Lupa/Shape.png';
 import { HeaderTitle } from './styles';
 
-const FilterHeroesDetails = ({ setHeroFilter }) => {
+const FilterHeroesDetails = ({ setHeroFilter, history }) => {
   return (
     <HeaderTitle>
-      <img src={logo} alt="Logo da marvel" />
+      <img src={logo} alt="Logo da marvel" onClick={() => history.push('/')} />
       <div>
         <img src={lupa} alt="lupa" />
         <input

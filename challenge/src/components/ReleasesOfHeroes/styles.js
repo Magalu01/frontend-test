@@ -35,8 +35,11 @@ export const ImgHero = styled.div`
 `;
 
 export const InfosHero = styled.div`
+  white-space: nowrap;
+  width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: flex;
-  width: 100%;
   justify-content: space-between;
   margin-top: -25px;
   padding: 25px;
