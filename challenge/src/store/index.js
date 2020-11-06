@@ -8,7 +8,6 @@ const persistConfig = {
   key: 'root',
   timeout: 10000,
   storage,
-  whitelist: ['authentication', 'filter'],
   version: 1,
 };
 
