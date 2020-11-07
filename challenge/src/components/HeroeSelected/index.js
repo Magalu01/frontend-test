@@ -16,6 +16,7 @@ import {
   Rating,
 } from './styles';
 import iconHeart from '../../assets/icones/heart/Path.png';
+import iconNoBoardHeart from '../../assets/icones/heart/Path Copy 2.png';
 import Video from '../../assets/icones/video/Shape.png';
 import Book from '../../assets/icones/book/Group.png';
 import Star from '../../assets/review/Group 4.png';
@@ -57,8 +58,9 @@ const HeroeSelected = () => {
     const itemsStories = comics;
     const { available } = series;
     const { path, extension } = thumbnail;
-
+    const favorite = favorites.find((p) => p.id === id);
     general = {
+      favorite,
       id,
       name,
       series,
@@ -97,7 +99,7 @@ const HeroeSelected = () => {
           <HeroTitle>
             <h1>{general.name || ''}</h1>
             <img
-              src={iconHeart}
+              src={general.favorite ? iconHeart : iconNoBoardHeart}
               alt="heart"
               onClick={() => checkFavorite(general.id)}
             />
