@@ -10,7 +10,12 @@ export const getAllHeroes = (name) => {
     API.get(
       `${url}/characters?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${
         process.env.REACT_APP_PUB_KEY
-      }&hash=${process.env.REACT_APP_HASH}&limit=${20}${nameParam}`
+      }&hash=${process.env.REACT_APP_HASH}&limit=${20}${nameParam}`,
+      {
+        headers: {
+          Accept: '*/*',
+        },
+      }
     )
       .then((response) => {
         const { data } = response.data;
@@ -47,7 +52,12 @@ export const selectedHero = (params) => {
 export const getHeroById = (id) => {
   return (dispatch) => {
     API.get(
-      `${url}/characters/${id}?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${process.env.REACT_APP_PUB_KEY}&hash=${process.env.REACT_APP_HASH}`
+      `${url}/characters/${id}?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${process.env.REACT_APP_PUB_KEY}&hash=${process.env.REACT_APP_HASH}`,
+      {
+        headers: {
+          Accept: '*/*',
+        },
+      }
     )
       .then((response) => {
         const { data } = response.data;
@@ -66,7 +76,12 @@ export const getHeroById = (id) => {
 export const getComics = (id) => {
   return (dispatch) => {
     API.get(
-      `${url}/characters/${id}/comics?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${process.env.REACT_APP_PUB_KEY}&hash=${process.env.REACT_APP_HASH}&limit=10`
+      `${url}/characters/${id}/comics?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${process.env.REACT_APP_PUB_KEY}&hash=${process.env.REACT_APP_HASH}&limit=10`,
+      {
+        headers: {
+          Accept: '*/*',
+        },
+      }
     )
       .then((response) => {
         const { data } = response.data;
@@ -89,7 +104,12 @@ export const getHeroByDetail = (name) => {
     API.get(
       `${url}/characters?ts=${process.env.REACT_APP_TIMESTAMP}&apikey=${
         process.env.REACT_APP_PUB_KEY
-      }&hash=${process.env.REACT_APP_HASH}&limit=${20}${nameParam}`
+      }&hash=${process.env.REACT_APP_HASH}&limit=${20}${nameParam}`,
+      {
+        headers: {
+          Accept: '*/*',
+        },
+      }
     )
       .then((response) => {
         const { data } = response.data;
