@@ -20,7 +20,7 @@ export const LeftTitle = styled.div`
   justify-content: left;
   align-content: center;
   width: 30%;
-
+  margin-left: 20px;
   h4 {
     color: #8c8c8c;
   }
@@ -29,6 +29,7 @@ export const LeftTitle = styled.div`
 export const RightTitle = styled.div`
   display: flex;
   justify-content: right;
+  margin-right: 20px;
 `;
 
 export const Ordenable = styled.div`

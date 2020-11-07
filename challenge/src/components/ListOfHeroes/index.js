@@ -106,7 +106,9 @@ const ListOfHeroes = ({
     <List>
       <TitleList>
         <LeftTitle>
-          <h4>Encontrados {heroes.length} heroís</h4>
+          <h4>
+            Encontrado {heroes.length} {heroes.length > 1 ? 'heróis' : 'herói'}
+          </h4>
         </LeftTitle>
         <RightTitle>
           <Ordenable>

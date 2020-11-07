@@ -20,9 +20,21 @@ export const HeaderTitle = styled.div`
     margin-top: 10px;
     font-size: 14px;
   }
+  @media (max-width: 500px) {
+    h1 {
+      font-size: 26px;
+    }
+    h4 {
+      margin-top: -10px;
+      padding: 40px;
+    }
+    div {
+      margin-top: -70px;
+    }
+  }
+
   div {
     max-width: 1280px;
-    min-width: 500px;
     width: 100%;
     img {
       position: absolute;
