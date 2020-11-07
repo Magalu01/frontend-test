@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import dateConvert from '../../utils/dateConvert';
 import ReleasesOfHeroes from '../ReleasesOfHeroes';
 import {
   Container,
@@ -55,11 +56,12 @@ const HeroeSelected = () => {
   let general = {};
 
   if (hero.id) {
-    const { id, name, series, comics, description, thumbnail } = hero;
+    const { id, name, series, comics, description, thumbnail, modified } = hero;
     const itemsStories = comics;
     const { available } = series;
     const { path, extension } = thumbnail;
     const favorite = favorites.find((p) => p.id === id);
+
     general = {
       favorite,
       id,
@@ -72,6 +74,7 @@ const HeroeSelected = () => {
       available,
       path,
       extension,
+      modified,
     };
   } else {
     history.push('/');
@@ -137,7 +140,7 @@ const HeroeSelected = () => {
             </Rating>
             <Date>
               <p>Último quadrinho: </p>
-              <b>13 fev 2020</b>
+              <b>{dateConvert(general.modified)}</b>
             </Date>
           </InfoHero>
         </LeftItem>
