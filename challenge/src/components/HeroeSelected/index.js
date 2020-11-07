@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ReleasesOfHeroes from '../ReleasesOfHeroes';
@@ -29,7 +28,6 @@ import {
 import redirect from '../../utils/redirect';
 
 const HeroeSelected = () => {
-  const [myFavorites, setMyFavorites] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const { location } = history;
