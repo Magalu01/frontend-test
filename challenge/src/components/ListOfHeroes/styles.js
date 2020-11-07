@@ -108,4 +108,8 @@ export const InfosHero = styled.div`
   button {
     border: none;
   }
+  img {
+    height: 20px;
+    width: 20px;
+  }
 `;

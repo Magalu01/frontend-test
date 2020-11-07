@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import iconHeart from '../../assets/icones/heart/Path.png';
+import iconHeart from '../../assets/icones/heart/Path@1,5x.png';
 import iconNoBoardHeart from '../../assets/icones/heart/Path Copy 2.png';
 import iconHero from '../../assets/icones/heroi/noun_Superhero_2227044.png';
 import {
@@ -130,6 +130,7 @@ const ListOfHeroes = ({
         {heroes.length > 0
           ? heroes.map((h) => {
               const { path, extension } = h.thumbnail;
+              const favorite = favorites.find((p) => p.id === h.id);
               return (
                 <HeroItem key={h.id}>
                   <ImgHero>
@@ -143,7 +144,7 @@ const ListOfHeroes = ({
                     <h4>{h.name}</h4>
                     <button onClick={() => checkFavorite(h.id)}>
                       <img
-                        src={iconNoBoardHeart || iconHeart}
+                        src={favorite ? iconHeart : iconNoBoardHeart}
                         alt="icons-heart"
                       />
                     </button>
