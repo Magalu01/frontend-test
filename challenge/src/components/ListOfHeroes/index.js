@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import iconHeart from '../../assets/icones/heart/Path@1,5x.png';
 import iconNoBoardHeart from '../../assets/icones/heart/Path Copy 2.png';
 import iconHero from '../../assets/icones/heroi/noun_Superhero_2227044.png';
@@ -74,6 +75,8 @@ const ListOfHeroes = ({
           (a, b) => a.name - b.name || a.name.localeCompare(b.name)
         );
         dispatch(favoriteHeroes([...favorites, findHero]));
+      } else {
+        toast('Você só pode favoritar até 5 heróis');
       }
     } else {
       const newItem = favorites.filter((f) => f.id !== item);

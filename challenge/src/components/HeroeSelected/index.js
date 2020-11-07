@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import ReleasesOfHeroes from '../ReleasesOfHeroes';
 import {
   Container,
@@ -84,6 +85,8 @@ const HeroeSelected = () => {
           (a, b) => a.name - b.name || a.name.localeCompare(b.name)
         );
         dispatch(favoriteHeroes([...favorites, hero]));
+      } else {
+        toast('Você só pode favoritar até 5 heróis');
       }
     } else {
       const newItem = favorites.filter((f) => f.id !== item);

@@ -106,7 +106,10 @@ export const InfosHero = styled.div`
     color: #404040;
   }
   button {
+    height: 20px;
+    width: 20px;
     border: none;
+    cursor: pointer;
   }
   img {
     height: 20px;
