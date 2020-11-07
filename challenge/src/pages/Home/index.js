@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import FilterHeroes from '../../components/FilterHeroes';
 import ListOfHeroes from '../../components/ListOfHeroes';
 
-// eslint-disable-next-line import/named
 import { getAllHeroes } from '../../store/actions/Heroes';
 import { Container, Header, Content } from './styles';
 

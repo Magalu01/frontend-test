@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ReleasesOfHeroes from '../ReleasesOfHeroes';
@@ -20,17 +21,22 @@ import Video from '../../assets/icones/video/Shape.png';
 import Book from '../../assets/icones/book/Group.png';
 import Star from '../../assets/review/Group 4.png';
 
-import { getHeroById, getComics } from '../../store/actions/Heroes';
+import {
+  getHeroById,
+  getComics,
+  favoriteHeroes,
+} from '../../store/actions/Heroes';
 import redirect from '../../utils/redirect';
 
 const HeroeSelected = () => {
+  const [myFavorites, setMyFavorites] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const { location } = history;
 
   redirect();
 
-  const { comicsBy, hero } = useSelector((state) => state.heroes);
+  const { comicsBy, hero, favorites } = useSelector((state) => state.heroes);
 
   useEffect(() => {
     if (hero.id) {
@@ -49,12 +55,13 @@ const HeroeSelected = () => {
   let general = {};
 
   if (hero.id) {
-    const { name, series, comics, description, thumbnail } = hero;
+    const { id, name, series, comics, description, thumbnail } = hero;
     const itemsStories = comics;
     const { available } = series;
     const { path, extension } = thumbnail;
 
     general = {
+      id,
       name,
       series,
       comics,
@@ -69,13 +76,33 @@ const HeroeSelected = () => {
     history.push('/');
   }
 
+  const checkFavorite = (item) => {
+    const findExistInFavorites = favorites.find((p) => p.id === item);
+    if (!findExistInFavorites) {
+      if (favorites.length < 5) {
+        favorites.sort(
+          (a, b) => a.name - b.name || a.name.localeCompare(b.name)
+        );
+        dispatch(favoriteHeroes([...favorites, hero]));
+      }
+    } else {
+      const newItem = favorites.filter((f) => f.id !== item);
+      newItem.sort((a, b) => a.name - b.name || a.name.localeCompare(b.name));
+      dispatch(favoriteHeroes([...newItem]));
+    }
+  };
+
   return (
     <Container>
       <ContentByHero>
         <LeftItem>
           <HeroTitle>
             <h1>{general.name || ''}</h1>
-            <img src={iconHeart} alt="heart" />
+            <img
+              src={iconHeart}
+              alt="heart"
+              onClick={() => checkFavorite(general.id)}
+            />
           </HeroTitle>
           <InfoHero>
             <p>{general.description || ''}</p>

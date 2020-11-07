@@ -35,6 +35,7 @@ export const HeroTitle = styled.div`
     color: #404040;
   }
   img {
+    cursor: pointer;
     height: 25px;
     width: 25px;
   }
