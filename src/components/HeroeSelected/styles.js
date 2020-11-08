@@ -19,11 +19,19 @@ export const RightItem = styled.div`
     height: 500px;
     width: 500px;
   }
+  @media (max-width: 700px) {
+    padding: 25px;
+  }
 `;
 
 export const LeftItem = styled.div`
   width: 300px;
   margin-right: 170px;
+  @media (max-width: 700px) {
+    width: 500px;
+    margin-right: 0px;
+    padding: 20px;
+  }
 `;
 
 export const HeroTitle = styled.div`
@@ -38,6 +46,9 @@ export const HeroTitle = styled.div`
     cursor: pointer;
     height: 25px;
     width: 25px;
+  }
+  @media (max-width: 700px) {
+    width: 100%;
   }
 `;
 
@@ -54,15 +65,20 @@ export const BooksAndMovies = styled.div`
   justify-content: space-between;
 `;
 
-export const Rating = styled.div``;
+export const Rating = styled.div`
+  margin-top: 40px;
+`;
 
-export const Date = styled.div``;
+export const Date = styled.div`
+  margin-top: 20px;
+`;
 
 export const Books = styled.div`
   margin-top: 10px;
   div {
     display: flex;
     align-items: center;
+    margin-top: 5px;
     h5 {
       padding-left: 20px;
       font-size: 20px;
@@ -76,6 +92,7 @@ export const Movies = styled.div`
   div {
     display: flex;
     align-items: center;
+    margin-top: 5px;
     h5 {
       padding-left: 20px;
       font-size: 20px;
