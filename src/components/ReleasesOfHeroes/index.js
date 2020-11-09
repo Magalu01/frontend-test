@@ -33,7 +33,7 @@ const ReleasesOfHeroes = ({ idHero, comicsByGet, history }) => {
             const { thumbnail } = p;
             const { path, extension } = thumbnail;
             return (
-              <div key={p.id}>
+              <div key={p.id} title={p.title}>
                 <ImgHero>
                   <img src={`${path}.${extension}`} alt={p.title} />
                 </ImgHero>
