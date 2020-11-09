@@ -35,6 +35,7 @@ export const ImgHero = styled.div`
 `;
 
 export const InfosHero = styled.div`
+  cursor: pointer;
   white-space: nowrap;
   width: 120px;
   overflow: hidden;
@@ -43,10 +44,8 @@ export const InfosHero = styled.div`
   justify-content: space-between;
   margin-top: -25px;
   padding: 25px;
-  h4 {
-    font-size: 15px;
-    color: #404040;
-  }
+  font-size: 15px;
+  color: #404040;
   button {
     border: none;
   }

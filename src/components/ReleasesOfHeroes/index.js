@@ -37,9 +37,7 @@ const ReleasesOfHeroes = ({ idHero, comicsByGet, history }) => {
                 <ImgHero>
                   <img src={`${path}.${extension}`} alt={p.title} />
                 </ImgHero>
-                <InfosHero>
-                  <h4>{p.title}</h4>
-                </InfosHero>
+                <InfosHero title={p.title}>{p.title}</InfosHero>
               </div>
             );
           })
