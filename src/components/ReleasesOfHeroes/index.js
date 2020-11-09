@@ -1,11 +1,8 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-key */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BodyList, ImgHero, HeroItem, InfosHero } from './styles';
 import { getComics } from '../../store/actions/Heroes';
 
-// eslint-disable-next-line consistent-return
 const ReleasesOfHeroes = ({ idHero, comicsByGet, history }) => {
   const { location } = history;
   const [comic, setComic] = useState([]);
@@ -21,8 +18,6 @@ const ReleasesOfHeroes = ({ idHero, comicsByGet, history }) => {
       if (state) {
         dispatch(getComics(state.id));
         setComic(comicsByGet);
-      } else {
-        history.push('/');
       }
     }
   }, [comic]);
@@ -30,25 +25,29 @@ const ReleasesOfHeroes = ({ idHero, comicsByGet, history }) => {
   return (
     <BodyList>
       <div>
-        <h4>Últimos lançamentos</h4>
+        <h3>Últimos lançamentos</h3>
       </div>
       <HeroItem>
-        {comicsBy && comicsBy.length > 0
-          ? comicsBy.map((p) => {
-              const { thumbnail } = p;
-              const { path, extension } = thumbnail;
-              return (
-                <div key={p.id}>
-                  <ImgHero>
-                    <img src={`${path}.${extension}`} alt={p.title} />
-                  </ImgHero>
-                  <InfosHero>
-                    <h4>{p.title}</h4>
-                  </InfosHero>
-                </div>
-              );
-            })
-          : []}
+        {comicsBy && comicsBy.length > 0 ? (
+          comicsBy.map((p) => {
+            const { thumbnail } = p;
+            const { path, extension } = thumbnail;
+            return (
+              <div key={p.id}>
+                <ImgHero>
+                  <img src={`${path}.${extension}`} alt={p.title} />
+                </ImgHero>
+                <InfosHero>
+                  <h4>{p.title}</h4>
+                </InfosHero>
+              </div>
+            );
+          })
+        ) : (
+          <div>
+            <h2 style={{ textAlign: 'center' }}>Nenhuma HQ Encontrada.</h2>
+          </div>
+        )}
       </HeroItem>
     </BodyList>
   );

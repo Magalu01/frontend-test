@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -126,38 +124,42 @@ const ListOfHeroes = ({
             />
           </Ordenable>
           <Favorites onClick={() => favoritesSelected()}>
-            <img src={iconHeart} alt="heart" />
+            <img src={myFavorites ? iconHeart : iconNoBoardHeart} alt="heart" />
             <h4>Somente favoritos</h4>
           </Favorites>
         </RightTitle>
       </TitleList>
       <BodyList>
-        {heroes.length > 0
-          ? heroes.map((h) => {
-              const { path, extension } = h.thumbnail;
-              const favorite = favorites.find((p) => p.id === h.id);
-              return (
-                <HeroItem key={h.id}>
-                  <ImgHero>
+        {heroes.length > 0 ? (
+          heroes.map((h) => {
+            const { path, extension } = h.thumbnail;
+            const favorite = favorites.find((p) => p.id === h.id);
+            return (
+              <HeroItem key={h.id}>
+                <ImgHero>
+                  <img
+                    src={`${path}.${extension}`}
+                    alt={h.name}
+                    onClick={() => heroSelected(h.id)}
+                  />
+                </ImgHero>
+                <InfosHero>
+                  <h4>{h.name}</h4>
+                  <button onClick={() => checkFavorite(h.id)}>
                     <img
-                      src={`${path}.${extension}`}
-                      alt={h.name}
-                      onClick={() => heroSelected(h.id)}
+                      src={favorite ? iconHeart : iconNoBoardHeart}
+                      alt="icons-heart"
                     />
-                  </ImgHero>
-                  <InfosHero>
-                    <h4>{h.name}</h4>
-                    <button onClick={() => checkFavorite(h.id)}>
-                      <img
-                        src={favorite ? iconHeart : iconNoBoardHeart}
-                        alt="icons-heart"
-                      />
-                    </button>
-                  </InfosHero>
-                </HeroItem>
-              );
-            })
-          : []}
+                  </button>
+                </InfosHero>
+              </HeroItem>
+            );
+          })
+        ) : (
+          <h1>
+            <b>Nenhum herói encontrado</b>
+          </h1>
+        )}
       </BodyList>
     </List>
   );

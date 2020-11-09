@@ -25,8 +25,6 @@ const Details = () => {
     if (hero.id) {
       const { id } = hero;
       history.push(`/details/${id}`, { id });
-    } else {
-      history.push(`/`);
     }
   }, [hero]);
 

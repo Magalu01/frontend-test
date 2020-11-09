@@ -28,15 +28,11 @@ import {
   getComics,
   favoriteHeroes,
 } from '../../store/actions/Heroes';
-import redirect from '../../utils/redirect';
 
 const HeroeSelected = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { location } = history;
-
-  redirect();
-
   const { comicsBy, hero, favorites } = useSelector((state) => state.heroes);
 
   useEffect(() => {
@@ -47,38 +43,9 @@ const HeroeSelected = () => {
       if (state) {
         dispatch(getHeroById(state.id));
         dispatch(getComics(state.id));
-      } else {
-        history.push('/');
       }
     }
   }, [hero]);
-
-  let general = {};
-
-  if (hero.id) {
-    const { id, name, series, comics, description, thumbnail, modified } = hero;
-    const itemsStories = comics;
-    const { available } = series;
-    const { path, extension } = thumbnail;
-    const favorite = favorites.find((p) => p.id === id);
-
-    general = {
-      favorite,
-      id,
-      name,
-      series,
-      comics,
-      description,
-      itemsStories,
-      thumbnail,
-      available,
-      path,
-      extension,
-      modified,
-    };
-  } else {
-    history.push('/');
-  }
 
   const checkFavorite = (item) => {
     const findExistInFavorites = favorites.find((p) => p.id === item);
@@ -98,67 +65,103 @@ const HeroeSelected = () => {
     }
   };
 
-  return (
-    <Container>
-      <ContentByHero>
-        <LeftItem>
-          <HeroTitle>
-            <h1>{general.name || ''}</h1>
-            <img
-              src={general.favorite ? iconHeart : iconNoBoardHeart}
-              alt="heart"
-              onClick={() => checkFavorite(general.id)}
-            />
-          </HeroTitle>
-          <InfoHero>
-            <p>{general.description || ''}</p>
-            <BooksAndMovies>
-              <Books>
-                <p>Quadrinhos</p>
-                <div>
-                  <img src={Book} alt="" />
-                  {
-                    <h5>
-                      {general && general.itemsStories
-                        ? general.itemsStories.available
-                        : ''}
-                    </h5>
-                  }
-                </div>
-              </Books>
-              <Movies>
-                <p>Filmes</p>
-                <div>
-                  <img src={Video} alt="" />
-                  {<h5>{general.available || ''}</h5>}
-                </div>
-              </Movies>
-            </BooksAndMovies>
-            <Rating>
-              <p>Rating: </p>
-              <img src={Star} alt="" />
-            </Rating>
-            <Date>
-              <p>Último quadrinho: </p>
-              <b>{dateConvert(general.modified)}</b>
-            </Date>
-          </InfoHero>
-        </LeftItem>
-        <RightItem>
-          {general && general.path && general.extension ? (
-            <img src={`${general.path}.${general.extension}`} alt="" />
-          ) : (
-            <img src={`/`} alt="" />
-          )}
-        </RightItem>
-      </ContentByHero>
-      <ReleasesOfHeroes
-        idHero={location.state ? location.state.id : ''}
-        comicsByGet={comicsBy}
-        history={history}
-      />
-    </Container>
-  );
+  const renderHero = () => {
+    if (hero.id) {
+      const {
+        id,
+        name,
+        series,
+        comics,
+        description,
+        thumbnail,
+        modified,
+      } = hero;
+      const itemsStories = comics;
+      const { available } = series;
+      const { path, extension } = thumbnail;
+      const favorite = favorites.find((p) => p.id === id);
+
+      const general = {
+        favorite,
+        id,
+        name,
+        series,
+        comics,
+        description,
+        itemsStories,
+        thumbnail,
+        available,
+        path,
+        extension,
+        modified,
+      };
+
+      return (
+        <>
+          <ContentByHero>
+            <LeftItem>
+              <HeroTitle>
+                <h1>{general.name || ''}</h1>
+                <img
+                  src={general.favorite ? iconHeart : iconNoBoardHeart}
+                  alt="heart"
+                  onClick={() => checkFavorite(general.id)}
+                />
+              </HeroTitle>
+              <InfoHero>
+                <p>{general.description || ''}</p>
+                <BooksAndMovies>
+                  <Books>
+                    <p>Quadrinhos</p>
+                    <div>
+                      <img src={Book} alt="" />
+                      {
+                        <h5>
+                          {general && general.itemsStories
+                            ? general.itemsStories.available
+                            : ''}
+                        </h5>
+                      }
+                    </div>
+                  </Books>
+                  <Movies>
+                    <p>Filmes</p>
+                    <div>
+                      <img src={Video} alt="" />
+                      {<h5>{general.available || ''}</h5>}
+                    </div>
+                  </Movies>
+                </BooksAndMovies>
+                <Rating>
+                  <p>Rating: </p>
+                  <img src={Star} alt="" />
+                </Rating>
+                <Date>
+                  <p>Último quadrinho: </p>
+                  <b>{dateConvert(general.modified)}</b>
+                </Date>
+              </InfoHero>
+            </LeftItem>
+            <RightItem>
+              {general && general.path && general.extension ? (
+                <img src={`${general.path}.${general.extension}`} alt="" />
+              ) : (
+                <img src={`/`} alt="" />
+              )}
+            </RightItem>
+          </ContentByHero>
+          <ReleasesOfHeroes
+            idHero={location.state ? location.state.id : ''}
+            comicsByGet={comicsBy}
+            history={history}
+          />
+        </>
+      );
+    }
+    return <b>Herói não encontrado</b>;
+  };
+
+  return <Container>{renderHero()}</Container>;
 };
 
 export default HeroeSelected;

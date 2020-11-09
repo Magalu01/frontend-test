@@ -17,6 +17,7 @@ module.exports = {
   },
   rules: {
     'no-underscore-dangle': 'off',
+    'react/prop-types': 0,
     'no-console': 'off',
     'import/prefer-default-export': 'off',
     'react/jsx-uses-react': 'error',
