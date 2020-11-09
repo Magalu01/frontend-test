@@ -12,7 +12,7 @@ PARA FAZER BUILD DE PRODUÇÃO
   # 2º após executado você deve digitar logo em seguida "serve -s build", para hospedar a aplicação localmente mas em modo produção.
   # Após feito isso o terminal ira lhe sugerir uma url de acesso local ou "http://localhost:5000"
 
-# Para finalizar ambos modos apertce CTRL+C para windows e linux e MacOS Control+C
+# Para finalizar ambos modos aperte CTRL+C para windows e linux e MacOS Control+C
 
 PARA FAZER DEPLOY EM ALGUM DOMINIO É MUITO MAIS SIMPLES
 
