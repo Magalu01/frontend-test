@@ -1,0 +1,17 @@
+@import "Common/Styles/index.scss";
+
+.HeroInfo {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+    width: 200px;
+    &__heart-icon {
+        fill: $white;
+        &--filled {
+            fill: $red;
+        }
+    }
+    &__hero-name {
+        @include truncate($width: 80%);
+    }
+}
