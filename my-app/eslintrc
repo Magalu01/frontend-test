@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:testing-library/recommended",
+    "plugin:testing-library/react"
+  ],
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "react-hooks",
+    "import"
+  ]
+}

@@ -1,0 +1,54 @@
+severity: error
+
+files:
+  include: 'src/**/*.scss'
+
+rules:
+  # Formatting
+  property-sort-order: 0
+  clean-import-paths: 0
+  nesting-depth:
+    - 1
+    - max-depth: 4
+
+  # Name Formats
+  class-name-format:
+    - 1
+    # This is a strictbem regex with some modifications to accept react classes like:
+    #   strictbem:
+    #     .my-block__element-foo_modifier-bar
+    #   this regex:
+    #     .MyBlock__element-foo--modifier
+    - convention: ^[A-Z]([a-zA-Z0-9]+)*(__[a-z0-9](-?[a-z0-9]+)*)?((--[a-z0-9](-?[a-z0-9]+)*){0,2})?$
+
+  # Style Guide
+  quotes:
+    - 1
+    - style: double
+severity: error
+
+files:
+  include: 'src/**/*.scss'
+
+rules:
+  # Formatting
+  property-sort-order: 0
+  clean-import-paths: 0
+  nesting-depth:
+    - 1
+    - max-depth: 4
+
+  # Name Formats
+  class-name-format:
+    - 1
+    # This is a strictbem regex with some modifications to accept react classes like:
+    #   strictbem:
+    #     .my-block__element-foo_modifier-bar
+    #   this regex:
+    #     .MyBlock__element-foo--modifier
+    - convention: ^[A-Z]([a-zA-Z0-9]+)*(__[a-z0-9](-?[a-z0-9]+)*)?((--[a-z0-9](-?[a-z0-9]+)*){0,2})?$
+
+  # Style Guide
+  quotes:
+    - 1
+    - style: double
