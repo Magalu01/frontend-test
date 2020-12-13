@@ -1,0 +1,35 @@
+@import "Common/Styles/index.scss";
+
+@font-face {
+  font-family: "WorkSans";
+  src: url("./Assets/Work_Sans/static/WorkSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "WorkSans";
+  font-weight: bold;
+  src: url("./Assets/Work_Sans/static/WorkSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "WorkSans";
+  font-weight: 600;
+  src: url("./Assets/Work_Sans/static/WorkSans-SemiBold.ttf") format("truetype");
+}
+
+html {
+  font-size: $smallest-text-size;
+  color: $grey;
+}
+
+h1 {
+  font-size: $big-text-size;
+  color: $dark-grey;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: $medium-text-size;
+  color: $dark-grey;
+  font-weight: 600;
+}
